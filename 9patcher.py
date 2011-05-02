@@ -6,7 +6,7 @@ import Image
 
 """
 9 Patcher
-Version 0.9 - Mon 2 May 2011
+Version 0.91 - Tue 3 May 2011
 
 by Reimund Trost <reimund@code7.se>
 <http://lumens.se/9-patcher/>
@@ -18,10 +18,10 @@ def main(argv=None):
 		argv = sys.argv
 
 	parser = argparse.ArgumentParser(description='Make 9 patch images.')
-	parser.add_argument('-t', metavar='start,length', nargs='+', help='black pixels in top margin.')
-	parser.add_argument('-r', metavar='start,length', nargs='+', help='black pixels in right margin.')
-	parser.add_argument('-b', metavar='start,length', nargs='+', help='black pixels in bottom margin.')
-	parser.add_argument('-l', metavar='start,length', nargs='+', help='black pixels in left margin.')
+	parser.add_argument('-t', metavar='start,end', nargs='+', help='black pixels in top margin.')
+	parser.add_argument('-r', metavar='start,end', nargs='+', help='black pixels in right margin.')
+	parser.add_argument('-b', metavar='start,end', nargs='+', help='black pixels in bottom margin.')
+	parser.add_argument('-l', metavar='start,end', nargs='+', help='black pixels in left margin.')
 	parser.add_argument('-i', metavar='input', required=True, help='input graphic file')
 	parser.add_argument('-o', metavar='output', help='output graphic file')
 
