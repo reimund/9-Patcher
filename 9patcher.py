@@ -29,17 +29,6 @@ def main(argv=None):
 		make_nine_patch(args)
 
 
-def prepare_graphic(im, top, left):
-	
-	(width, height) = im.size
-	offset_y = 1 if top != None else 0
-	offset_x = 1 if left != None else 0
-
-	prepared = Image.new('RGBA', (width + offset_x, height + offset_y), (255,255,255,255))
-	prepared.paste(im, (offset_x, offset_y))
-	return prepared
-
-
 def make_nine_patch(args):
 	outfile = ''
 
@@ -50,12 +39,12 @@ def make_nine_patch(args):
 		outfile = args['o']
 
 	pixels = []
-	size = ()
 
 	try:
 		im = Image.open(args['i'], 'r')
-		size = im.size
-		out_im = prepare_graphic(im, args['t'], args['l'])
+		(width, height) = im.size
+		out_im = Image.new('RGBA', (width + 2, height + 2), (255,255,255,0))
+		out_im.paste(im, (1, 1))
 		pixels = out_im.load()
 	except IOError:
 		print ''.join(['Could not read ', infile, '.']) 
@@ -71,7 +60,7 @@ def make_nine_patch(args):
 				print 'Patch regions must be specified as integer pairs.'
 				return
 			except IndexError:
-				print ''.join(['A top patch region exceeds the image dimensions. Top patches must be within the range 0-', str(size[0] - 1), '.'])
+				print ''.join(['A top patch region exceeds the image dimensions. Top patches must be within the range 0-', str(width - 1), '.'])
 				return
 	
 	if args['l'] != None:
@@ -84,7 +73,7 @@ def make_nine_patch(args):
 				print 'Patch regions must be specified as integer pairs.'
 				return
 			except IndexError:
-				print ''.join(['A left patch region exceeds the image dimensions. Left paches must be within the range 0-', str(size[1] - 1), '.'])
+				print ''.join(['A left patch region exceeds the image dimensions. Left paches must be within the range 0-', str(height - 1), '.'])
 				return
 
 	try: 
