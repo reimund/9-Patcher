@@ -10,6 +10,8 @@ Version 0.9 - Mon 2 May 2011
 
 by Reimund Trost <reimund@code7.se>
 <http://lumens.se/9patcher/>
+
+Requires Python Image Library and argparse.
 """
 def main(argv=None):
 	if argv is None:
