@@ -17,7 +17,7 @@ def main(argv=None):
 	if argv is None:
 		argv = sys.argv
 
-	parser = argparse.ArgumentParser(description='Make 9 patch images.')
+	parser = argparse.ArgumentParser(description='Make 9-patch images.')
 	parser.add_argument('-t', metavar='start,end', nargs='+', help='black pixels in top margin.')
 	parser.add_argument('-r', metavar='start,end', nargs='+', help='black pixels in right margin.')
 	parser.add_argument('-b', metavar='start,end', nargs='+', help='black pixels in bottom margin.')
