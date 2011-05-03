@@ -6,7 +6,7 @@ import Image
 
 """
 9 Patcher
-Version 0.91 - Tue 3 May 2011
+Version 1.0 - Tue 3 May 2011
 
 by Reimund Trost <reimund@code7.se>
 <http://lumens.se/9-patcher/>
@@ -36,12 +36,10 @@ def main(argv=None):
 
 
 def make_nine_patch(args):
-
 	if (os.path.isdir(args['i'])):
 		input_files = [args['i'] + '/' + x for x in os.listdir(args['i'])]
 	else:
 		input_files = [args['i']]
-	
 
 	for file in input_files:
 		try:
@@ -68,7 +66,6 @@ def make_nine_patch(args):
 
 # Saves the specified image to the location indicated by the command line arguments.
 def save_nine_patch(im, file, input, output, verbose):
-
 	if (input == None):
 		outfile = ninify(file)
 	else:
