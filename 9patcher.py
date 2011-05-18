@@ -30,7 +30,7 @@ def main(argv=None):
 
 	if (args['t'] == None and args['r'] == None
 			and args['b'] == None and args['l'] == None):
-		print 'No patches defined. There\'s nothing for me to do.'
+		print('No patches defined. There\'s nothing for me to do.')
 	else:
 		make_nine_patch(args)
 
@@ -49,7 +49,7 @@ def make_nine_patch(args):
 			out_im.paste(im, (1, 1))
 			pixels = out_im.load()
 		except IOError:
-			print ''.join(['Could not read ', file, '.']) 
+			print(''.join(['Could not read ', file, '.']))
 			return
 		
 		try:
@@ -58,7 +58,7 @@ def make_nine_patch(args):
 			draw_patches(args['b'], 'bottom', pixels, width, height)
 			draw_patches(args['l'], 'left', pixels, width, height)
 		except PatchError as e:
-			print e
+			print(e)
 			return
 
 		save_nine_patch(out_im, file, args['i'], args['o'], args['v'])
@@ -88,9 +88,9 @@ def save_nine_patch(im, file, input, output, verbose):
 	try: 
 		im.save(outfile, 'png')
 		if (verbose):
-			print ''.join(['Wrote \'', outfile, '\'.'])
+			print(''.join(['Wrote \'', outfile, '\'.']))
 	except IOError:
-		print ''.join(['Could not create output file \'', outfile, '\'.'])
+		print(''.join(['Could not create output file \'', outfile, '\'.']))
 
 
 # Draws the black pixels on the specified patches.
